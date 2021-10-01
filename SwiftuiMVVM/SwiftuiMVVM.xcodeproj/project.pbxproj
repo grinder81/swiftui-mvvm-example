@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6D2EAF8B2706BFE700F7EF90 /* StoreItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2EAF8A2706BFE700F7EF90 /* StoreItemView.swift */; };
+		6D2EAF8D2706CCD800F7EF90 /* StoreItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2EAF8C2706CCD800F7EF90 /* StoreItemViewModel.swift */; };
+		6D2EAF8F2706E2A200F7EF90 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2EAF8E2706E2A200F7EF90 /* ImageLoader.swift */; };
+		6D2EAF912706E8EA00F7EF90 /* AppError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2EAF902706E8EA00F7EF90 /* AppError.swift */; };
 		6DD35C862706051B00067EFD /* SwiftuiMVVMApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DD35C852706051B00067EFD /* SwiftuiMVVMApp.swift */; };
 		6DD35C882706051B00067EFD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DD35C872706051B00067EFD /* ContentView.swift */; };
 		6DD35C8A2706051E00067EFD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6DD35C892706051E00067EFD /* Assets.xcassets */; };
@@ -19,6 +23,7 @@
 		6DD35CBE270648D500067EFD /* StoreListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DD35CBD270648D500067EFD /* StoreListView.swift */; };
 		6DD35CC027064BA000067EFD /* StoreListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DD35CBF27064BA000067EFD /* StoreListViewModel.swift */; };
 		6DD35CC227064C0F00067EFD /* AppStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DD35CC127064C0F00067EFD /* AppStore.swift */; };
+		6DD35CC52706BAB800067EFD /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DD35CC42706BAB800067EFD /* MapView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,6 +44,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6D2EAF8A2706BFE700F7EF90 /* StoreItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreItemView.swift; sourceTree = "<group>"; };
+		6D2EAF8C2706CCD800F7EF90 /* StoreItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreItemViewModel.swift; sourceTree = "<group>"; };
+		6D2EAF8E2706E2A200F7EF90 /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
+		6D2EAF902706E8EA00F7EF90 /* AppError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppError.swift; sourceTree = "<group>"; };
 		6DD35C822706051B00067EFD /* SwiftuiMVVM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftuiMVVM.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6DD35C852706051B00067EFD /* SwiftuiMVVMApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftuiMVVMApp.swift; sourceTree = "<group>"; };
 		6DD35C872706051B00067EFD /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -57,6 +66,7 @@
 		6DD35CBD270648D500067EFD /* StoreListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreListView.swift; sourceTree = "<group>"; };
 		6DD35CBF27064BA000067EFD /* StoreListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreListViewModel.swift; sourceTree = "<group>"; };
 		6DD35CC127064C0F00067EFD /* AppStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStore.swift; sourceTree = "<group>"; };
+		6DD35CC42706BAB800067EFD /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +94,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6D2EAF882706BFB800F7EF90 /* StoreList */ = {
+			isa = PBXGroup;
+			children = (
+				6DD35CBD270648D500067EFD /* StoreListView.swift */,
+				6DD35CBF27064BA000067EFD /* StoreListViewModel.swift */,
+			);
+			path = StoreList;
+			sourceTree = "<group>";
+		};
+		6D2EAF892706BFC500F7EF90 /* StoreItem */ = {
+			isa = PBXGroup;
+			children = (
+				6D2EAF8A2706BFE700F7EF90 /* StoreItemView.swift */,
+				6D2EAF8C2706CCD800F7EF90 /* StoreItemViewModel.swift */,
+			);
+			path = StoreItem;
+			sourceTree = "<group>";
+		};
 		6DD35C792706051B00067EFD = {
 			isa = PBXGroup;
 			children = (
@@ -144,10 +172,12 @@
 		6DD35CB02706065A00067EFD /* App */ = {
 			isa = PBXGroup;
 			children = (
+				6DD35CC32706BAA000067EFD /* Map */,
 				6DD35CBC270615CB00067EFD /* Feature */,
 				6DD35C852706051B00067EFD /* SwiftuiMVVMApp.swift */,
 				6DD35C872706051B00067EFD /* ContentView.swift */,
 				6DD35CC127064C0F00067EFD /* AppStore.swift */,
+				6D2EAF902706E8EA00F7EF90 /* AppError.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -175,6 +205,7 @@
 			isa = PBXGroup;
 			children = (
 				6DD35CBA2706114700067EFD /* RestaurantAPIClientLive.swift */,
+				6D2EAF8E2706E2A200F7EF90 /* ImageLoader.swift */,
 			);
 			path = Infrastructure;
 			sourceTree = "<group>";
@@ -182,10 +213,18 @@
 		6DD35CBC270615CB00067EFD /* Feature */ = {
 			isa = PBXGroup;
 			children = (
-				6DD35CBD270648D500067EFD /* StoreListView.swift */,
-				6DD35CBF27064BA000067EFD /* StoreListViewModel.swift */,
+				6D2EAF892706BFC500F7EF90 /* StoreItem */,
+				6D2EAF882706BFB800F7EF90 /* StoreList */,
 			);
 			path = Feature;
+			sourceTree = "<group>";
+		};
+		6DD35CC32706BAA000067EFD /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				6DD35CC42706BAB800067EFD /* MapView.swift */,
+			);
+			path = Map;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -319,11 +358,16 @@
 			files = (
 				6DD35CB92706110700067EFD /* Store.swift in Sources */,
 				6DD35CB427060A5100067EFD /* StoreAPIClient.swift in Sources */,
+				6D2EAF8F2706E2A200F7EF90 /* ImageLoader.swift in Sources */,
 				6DD35CBE270648D500067EFD /* StoreListView.swift in Sources */,
+				6D2EAF912706E8EA00F7EF90 /* AppError.swift in Sources */,
 				6DD35C882706051B00067EFD /* ContentView.swift in Sources */,
 				6DD35CBB2706114700067EFD /* RestaurantAPIClientLive.swift in Sources */,
+				6D2EAF8B2706BFE700F7EF90 /* StoreItemView.swift in Sources */,
+				6D2EAF8D2706CCD800F7EF90 /* StoreItemViewModel.swift in Sources */,
 				6DD35C862706051B00067EFD /* SwiftuiMVVMApp.swift in Sources */,
 				6DD35CC027064BA000067EFD /* StoreListViewModel.swift in Sources */,
+				6DD35CC52706BAB800067EFD /* MapView.swift in Sources */,
 				6DD35CC227064C0F00067EFD /* AppStore.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

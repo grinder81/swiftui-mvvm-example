@@ -11,7 +11,7 @@ struct StoreListView: View {
         ZStack(alignment: .bottomTrailing) {
             List {
                 ForEach(self.viewModel.stores) { store in
-                    Text(store.name)
+                    StoreItemView(viewModel: .init(id: store.id))
                 }
             }
             .listStyle(PlainListStyle())
