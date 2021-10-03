@@ -47,7 +47,7 @@ class StoreItemViewModel: ObservableObject {
     init(
         id: String,
         service: StoreItemService = .live(),
-        imageLoader: ImageLoader = .live()
+        imageLoader: ImageLoader = .live(urlSession: .imageSession())
     ) {
         self.id = id
         self.service = service

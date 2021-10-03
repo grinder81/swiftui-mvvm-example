@@ -6,17 +6,23 @@ import Combine
 // Store in a secure place
 private let API_KEY = "HFwlf0tcqyTjHiNDsWIlkzMXw8NccoJjWn--_dlPjdQYU4iy_1ajEwk26O2rpd6psyedU04SLgbmQMF2yi6aAC6moIRQmeVq5xnAStO3CIgm5i1FavfJw2iEJ3McYXYx"
 
-struct StoreSearchRequest {
+struct StoreGeoSearchRequest {
     let latitude: Double
     let longitude: Double
 }
+
+struct StoreTermSearchRequest {
+    let term: String
+    let location: String
+}
+
 
 struct StoreSearchResponse: Codable {
     let total: Int
     let businesses: [Store]
 }
 
-extension StoreSearchRequest {
+extension StoreGeoSearchRequest: RequestableType {
     func urlRequest(baseUrl: URL) -> URLRequest {
         guard let pathUrl = URL(string: "/v3/businesses/search", relativeTo: baseUrl) else {
             fatalError()
@@ -32,6 +38,24 @@ extension StoreSearchRequest {
         return URLRequest(url: url)
     }
 }
+
+extension StoreTermSearchRequest: RequestableType {
+    func urlRequest(baseUrl: URL) -> URLRequest {
+        guard let pathUrl = URL(string: "/v3/businesses/search", relativeTo: baseUrl) else {
+            fatalError()
+        }
+        var components = URLComponents(url: pathUrl, resolvingAgainstBaseURL: true)
+        components?.queryItems = [
+            .init(name: "term", value: "\(term)"),
+            .init(name: "location", value: "\(location)")
+        ]
+        guard let url = components?.url else {
+            fatalError()
+        }
+        return URLRequest(url: url)
+    }
+}
+
 
 extension StoreAPIClient {
     static func live(

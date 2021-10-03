@@ -2,7 +2,7 @@ import Foundation
 import Combine
 import CoreLocation
 
-struct StoreListService {
+struct StoreSearchService {
     // Observe for stores data
     // Single source will provide that
     var stores: AnyPublisher<[Store], Never>
@@ -10,10 +10,13 @@ struct StoreListService {
     // Initiate the call but VM doesn't need to know
     // the source. Single source will notify if any data
     // changes
-    var fetchStores: (CLLocation) -> AnyCancellable
+    var searchByGeoLocation: (CLLocation) -> AnyCancellable
+
+    // Search by text
+    var searchByTerm: (String, String) -> AnyPublisher<[Store], Never>
 }
 
-extension StoreListService {
+extension StoreSearchService {
     // We can provide any testable data store for testing
     static func live(
         store: AppStore = .store,
@@ -24,8 +27,8 @@ extension StoreListService {
                 .removeDuplicates()
                 .replaceNil(with: [])
                 .eraseToAnyPublisher(),
-            fetchStores: { location in
-                let request = StoreSearchRequest(
+            searchByGeoLocation: { location in
+                let request = StoreGeoSearchRequest(
                     latitude: location.coordinate.latitude,
                     longitude: location.coordinate.longitude
                 )
@@ -38,40 +41,17 @@ extension StoreListService {
                             store.stores = response.businesses
                         }
                     )
-
+            },
+            searchByTerm: { searchTerm, location in
+                let request = StoreTermSearchRequest(
+                    term: searchTerm,
+                    location: location
+                )
+                return apiClient.searchStore(request)
+                    .map { $0.businesses }
+                    .replaceError(with: [])
+                    .eraseToAnyPublisher()
             }
         )
     }
-}
-
-class StoreListViewModel: ObservableObject {
-    @Published var stores: [Store] = []
-
-    let service: StoreListService
-
-    var storesCancellable: AnyCancellable?
-    var fetchStoreCancellable: AnyCancellable?
-
-    init(service: StoreListService) {
-        self.service = service
-
-        // Register to observe
-        // VM doesn't have any idea where the
-        // data coming. It just observe and pass to View
-        self.storesCancellable = self.service.stores
-            .sink {[weak self] stores in
-                self?.stores = stores
-            }
-    }
-
-    func fetchStore() {
-        // Hard coded co-ordinate for now
-        // Use Core location service for real location
-        self.fetchStoreCancellable = self.service
-            .fetchStores(CLLocation(latitude: 43.651070, longitude: -79.347015))
-    }
-}
-
-extension StoreListViewModel {
-    static let live = StoreListViewModel(service: .live())
 }

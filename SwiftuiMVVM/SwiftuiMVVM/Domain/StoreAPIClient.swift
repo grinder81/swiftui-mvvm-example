@@ -3,10 +3,14 @@ import Combine
 
 // You can move to SPM will have huge compile time help
 
+protocol RequestableType {
+    func urlRequest(baseUrl: URL) -> URLRequest
+}
+
 struct StoreAPIClient {
     var baseUrl: () -> URL
     var setBaseUrl: (URL) -> Void
-    var searchStore: (StoreSearchRequest) -> AnyPublisher<StoreSearchResponse, Error>
+    var searchStore: (RequestableType) -> AnyPublisher<StoreSearchResponse, Error>
 }
 
 extension StoreAPIClient {
