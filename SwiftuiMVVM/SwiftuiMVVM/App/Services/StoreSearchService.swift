@@ -13,7 +13,7 @@ struct StoreSearchService {
     var searchByGeoLocation: (CLLocation) -> AnyCancellable
 
     // Search by text
-    var searchByTerm: (String, String) -> AnyPublisher<[Store], Never>
+    var searchByTerm: (String, String) -> AnyPublisher<[Store]?, Never>
 }
 
 extension StoreSearchService {
@@ -49,7 +49,7 @@ extension StoreSearchService {
                 )
                 return apiClient.searchStore(request)
                     .map { $0.businesses }
-                    .replaceError(with: [])
+                    .replaceError(with: nil)
                     .eraseToAnyPublisher()
             }
         )

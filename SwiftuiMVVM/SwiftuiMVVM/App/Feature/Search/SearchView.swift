@@ -3,6 +3,23 @@ import SwiftUI
 // https://stackoverflow.com/questions/56490963/how-to-display-a-search-bar-with-swiftui
 
 
+struct SelectableCell: View {
+    let item: String
+
+    @Binding var selected: String
+
+    var body: some View {
+        HStack {
+            Text(item)
+            Spacer()
+        }
+        .contentShape(Rectangle())
+        .onTapGesture {
+            selected = item
+        }
+    }
+}
+
 struct SearchView: View {
     @ObservedObject var viewModel: SearchViewModel
 
@@ -13,58 +30,49 @@ struct SearchView: View {
     var body: some View {
         NavigationView {
             VStack {
-                HStack {
-                    HStack {
-                        Image(systemName: "magnifyingglass")
-
-                        TextField(
-                            "Search",
-                            text: self.$viewModel.searchText,
-                            onEditingChanged: { isEditing in
-                                viewModel.isCancelEnabed = true
-                            },
-                            onCommit: {
-
-                            }
-                        )
-                        .foregroundColor(.primary)
-
-                        Button(
-                            action: {
-                                viewModel.searchText = ""
-                            },
-                            label: {
-                                Image(systemName: "xmark.circle.fill")
-                                    .opacity(viewModel.isCancelEnabed ? 1 : 0)
-                            }
-                        )
-                    }
-                    .padding(EdgeInsets(top: 8, leading: 6, bottom: 8, trailing: 6))
-                    .foregroundColor(.secondary)
-                    .background(Color(.secondarySystemBackground))
-                    .cornerRadius(10)
-
-                    if viewModel.isCancelEnabed {
-                        Button(
-                            action: {
-                                UIApplication.shared.endEditing(true) 
-                                viewModel.searchText = ""
-                                viewModel.isCancelEnabed = false
-                            },
-                            label: {
-                                Text("Cancel")
-                            }
-                        )
-                    }
-                }
+                SearchBarView(
+                    searchText: $viewModel.searchText,
+                    isEditing: $viewModel.isCancelEnabed
+                )
                 .padding()
 
-                List {
-                    ForEach(viewModel.stores) { store in
-                        Text(store.name)
+                Group {
+                    // When we have result
+                    if let stores  = viewModel.suggestedStores {
+                        List {
+                            ForEach(stores) { store in
+                                Text(store.name)
+                            }
+                        }
+                        .listStyle(PlainListStyle())
+                    } else {
+                        List {
+                            if viewModel.defaultStores.recents.count > 0 {
+                                Section(header: Text("Recents")) {
+                                    ForEach(viewModel.defaultStores.recents, id: \.self) { recent in
+                                        SelectableCell(
+                                            item: recent,
+                                            selected: $viewModel.selectedText
+                                        )
+                                    }
+                                }
+                                .textCase(nil)
+                            }
+
+                            Section(header: Text("Cuisines")) {
+                                ForEach(viewModel.defaultStores.cusines, id: \.self) { cuisine in
+                                    SelectableCell(
+                                        item: cuisine.rawValue,
+                                        selected: $viewModel.selectedText
+                                    )
+                                }
+
+                            }
+                            .textCase(nil)
+                        }
+                        .listStyle(PlainListStyle())
                     }
                 }
-                .listStyle(PlainListStyle())
             }
             .navigationBarTitle(Text("Search"))
             .navigationBarHidden(viewModel.isCancelEnabed)
@@ -75,14 +83,5 @@ struct SearchView: View {
 struct SearchView_Previews: PreviewProvider {
     static var previews: some View {
         SearchView(viewModel: .init())
-    }
-}
-
-extension UIApplication {
-    func endEditing(_ force: Bool) {
-        self.windows
-            .filter{$0.isKeyWindow}
-            .first?
-            .endEditing(force)
     }
 }
