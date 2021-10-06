@@ -73,6 +73,7 @@ struct SearchView: View {
                         .listStyle(PlainListStyle())
                     }
                 }
+                .redacted(reason: viewModel.isLoading ? .placeholder : [])
             }
             .navigationBarTitle(Text("Search"))
             .navigationBarHidden(viewModel.isCancelEnabed)

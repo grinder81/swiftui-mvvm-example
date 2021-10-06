@@ -7,6 +7,8 @@ struct StoreSearchService {
     // Single source will provide that
     var stores: AnyPublisher<[Store], Never>
 
+    var location: AnyPublisher<CLLocation, Never>
+
     // Initiate the call but VM doesn't need to know
     // the source. Single source will notify if any data
     // changes
@@ -26,6 +28,9 @@ extension StoreSearchService {
             stores: store.$stores
                 .removeDuplicates()
                 .replaceNil(with: [])
+                .eraseToAnyPublisher(),
+            location: store.$currentLocation
+                .compactMap { $0 }
                 .eraseToAnyPublisher(),
             searchByGeoLocation: { location in
                 let request = StoreGeoSearchRequest(

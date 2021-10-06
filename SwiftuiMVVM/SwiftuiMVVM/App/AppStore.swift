@@ -1,8 +1,10 @@
 import Foundation
 import Combine
+import CoreLocation
 
 class AppStore: ObservableObject {
     @Published var stores: [Store]?
+    @Published var currentLocation: CLLocation?
 }
 
 extension AppStore {

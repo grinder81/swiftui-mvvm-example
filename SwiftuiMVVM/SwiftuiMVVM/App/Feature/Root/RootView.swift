@@ -17,7 +17,7 @@ struct RootView: View {
 
     var body: some View {
         TabView(selection: self.$viewModel.selection) {
-            HomeView()
+            HomeView(viewModel: .init())
                 .tabItem {
                     Image(systemName: "house")
                     Text("Home")

@@ -1,6 +1,12 @@
 import SwiftUI
 
 struct HomeView: View {
+    @ObservedObject var viewModel: HomeViewModel
+
+    init(viewModel: HomeViewModel) {
+        self.viewModel = viewModel
+    }
+
     var body: some View {
         NavigationView {
             ZStack {
@@ -14,7 +20,7 @@ struct HomeView: View {
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            HomeView()
+            HomeView(viewModel: .init())
         }
     }
 }

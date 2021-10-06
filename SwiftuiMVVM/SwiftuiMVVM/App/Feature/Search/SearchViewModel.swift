@@ -14,6 +14,7 @@ class SearchViewModel: ObservableObject {
     @Published var isCancelEnabed = false
     @Published var suggestedStores: [Store]?
     @Published var defaultStores = SearchRecord()
+    @Published var isLoading = false
 
     let storeSearchService: StoreSearchService
 
@@ -39,7 +40,8 @@ class SearchViewModel: ObservableObject {
                 }
                 self?.searchText = term
             })
-            .flatMap { term -> AnyPublisher<[Store]?, Never> in
+            .flatMap {[weak self] term -> AnyPublisher<[Store]?, Never> in
+                self?.isLoading = true
                 guard term.isEmpty == false else {
                     return Just(nil).eraseToAnyPublisher()
                 }
@@ -48,6 +50,7 @@ class SearchViewModel: ObservableObject {
             .subscribe(on: DispatchQueue.global())
             .receive(on: DispatchQueue.main)
             .sink {[weak self] stores in
+                self?.isLoading = false
                 self?.suggestedStores = stores
             }
     }

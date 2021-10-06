@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		6D248BCB270A374400434DBC /* SearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D248BCA270A374400434DBC /* SearchBarView.swift */; };
+		6D248BDF270B993A00434DBC /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D248BDE270B993A00434DBC /* HomeViewModel.swift */; };
+		6D248BE1270BFB4A00434DBC /* LocationClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D248BE0270BFB4A00434DBC /* LocationClient.swift */; };
+		6D248BE3270BFB7E00434DBC /* LocationClientLive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D248BE2270BFB7E00434DBC /* LocationClientLive.swift */; };
 		6D2EAF8B2706BFE700F7EF90 /* StoreItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2EAF8A2706BFE700F7EF90 /* StoreItemView.swift */; };
 		6D2EAF8D2706CCD800F7EF90 /* StoreItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2EAF8C2706CCD800F7EF90 /* StoreItemViewModel.swift */; };
 		6D2EAF8F2706E2A200F7EF90 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2EAF8E2706E2A200F7EF90 /* ImageLoader.swift */; };
@@ -52,6 +55,9 @@
 
 /* Begin PBXFileReference section */
 		6D248BCA270A374400434DBC /* SearchBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarView.swift; sourceTree = "<group>"; };
+		6D248BDE270B993A00434DBC /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		6D248BE0270BFB4A00434DBC /* LocationClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationClient.swift; sourceTree = "<group>"; };
+		6D248BE2270BFB7E00434DBC /* LocationClientLive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationClientLive.swift; sourceTree = "<group>"; };
 		6D2EAF8A2706BFE700F7EF90 /* StoreItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreItemView.swift; sourceTree = "<group>"; };
 		6D2EAF8C2706CCD800F7EF90 /* StoreItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreItemViewModel.swift; sourceTree = "<group>"; };
 		6D2EAF8E2706E2A200F7EF90 /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
@@ -219,6 +225,7 @@
 			children = (
 				6DD35CB327060A5100067EFD /* StoreAPIClient.swift */,
 				6DD35CB82706110700067EFD /* Store.swift */,
+				6D248BE0270BFB4A00434DBC /* LocationClient.swift */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -228,6 +235,7 @@
 			children = (
 				6DD35CBA2706114700067EFD /* RestaurantAPIClientLive.swift */,
 				6D2EAF8E2706E2A200F7EF90 /* ImageLoader.swift */,
+				6D248BE2270BFB7E00434DBC /* LocationClientLive.swift */,
 			);
 			path = Infrastructure;
 			sourceTree = "<group>";
@@ -259,6 +267,7 @@
 				6D2EAF892706BFC500F7EF90 /* StoreItem */,
 				6D2EAF882706BFB800F7EF90 /* StoreList */,
 				6DF3CA2A2708CF51001ED331 /* HomeView.swift */,
+				6D248BDE270B993A00434DBC /* HomeViewModel.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -439,6 +448,7 @@
 				6DD35CB427060A5100067EFD /* StoreAPIClient.swift in Sources */,
 				6D2EAF8F2706E2A200F7EF90 /* ImageLoader.swift in Sources */,
 				6DF3CA3C270914E3001ED331 /* SearchViewModel.swift in Sources */,
+				6D248BE3270BFB7E00434DBC /* LocationClientLive.swift in Sources */,
 				6DD35CBE270648D500067EFD /* StoreListView.swift in Sources */,
 				6D2EAF912706E8EA00F7EF90 /* AppError.swift in Sources */,
 				6DF3CA382708DD34001ED331 /* SearchView.swift in Sources */,
@@ -449,10 +459,12 @@
 				6DF3CA332708D7B8001ED331 /* RootViewModel.swift in Sources */,
 				6DF3CA362708DBFE001ED331 /* StoreSearchService.swift in Sources */,
 				6DD35C862706051B00067EFD /* SwiftuiMVVMApp.swift in Sources */,
+				6D248BDF270B993A00434DBC /* HomeViewModel.swift in Sources */,
 				6DD35CC027064BA000067EFD /* StoreListViewModel.swift in Sources */,
 				6DF3CA3A2708E719001ED331 /* OffersView.swift in Sources */,
 				6DD35CC52706BAB800067EFD /* MapView.swift in Sources */,
 				6DD35CC227064C0F00067EFD /* AppStore.swift in Sources */,
+				6D248BE1270BFB4A00434DBC /* LocationClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
