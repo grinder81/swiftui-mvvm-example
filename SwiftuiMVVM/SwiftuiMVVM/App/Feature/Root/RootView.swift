@@ -24,7 +24,7 @@ struct RootView: View {
                 }
                 .tag(Tab.home)
 
-            Text("Pickup")
+            PickView(viewModel: .init())
                 .tabItem {
                     Image(systemName: "figure.walk")
                     Text("Pickup")

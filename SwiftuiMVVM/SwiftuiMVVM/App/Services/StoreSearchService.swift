@@ -34,6 +34,7 @@ extension StoreSearchService {
                 .eraseToAnyPublisher(),
             searchByGeoLocation: { location in
                 let request = StoreGeoSearchRequest(
+                    term: nil,
                     latitude: location.coordinate.latitude,
                     longitude: location.coordinate.longitude
                 )

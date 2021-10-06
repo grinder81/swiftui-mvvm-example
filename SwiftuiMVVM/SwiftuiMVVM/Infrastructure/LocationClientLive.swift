@@ -35,6 +35,7 @@ extension LocationClient {
             requestLocation: locationManager.requestLocation,
             delegate: subject
                 .handleEvents(receiveCancel: {
+                    // Holding the reference 
                     delegate = nil
                 })
                 .eraseToAnyPublisher()
